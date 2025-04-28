@@ -1,0 +1,73 @@
+local MyLibrary = {}
+
+function MyLibrary:CreateWindow(title, description)
+    local window = Instance.new("ScreenGui")
+    window.Name = title
+    window.DisplayOrder = 100
+    window.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0, 400, 0, 250)
+    frame.Position = UDim2.new(0.5, -200, 0.5, -125)
+    frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    frame.Parent = window
+
+    local label = Instance.new("TextLabel")
+    label.Size = UDim2.new(1, 0, 0, 50)
+    label.Text = title
+    label.TextColor3 = Color3.fromRGB(255, 255, 255)
+    label.TextSize = 24
+    label.BackgroundTransparency = 1
+    label.Parent = frame
+
+    function MyLibrary:ChangeTheme(color)
+        frame.BackgroundColor3 = color
+    end
+
+    function MyLibrary:CreateColorPicker()
+        local colorFrame = Instance.new("Frame")
+        colorFrame.Size = UDim2.new(1, 0, 0, 40)
+        colorFrame.Position = UDim2.new(0, 0, 0.2, 0)
+        colorFrame.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+        colorFrame.Parent = frame
+
+        local buttonBlue = Instance.new("TextButton")
+        buttonBlue.Size = UDim2.new(0, 100, 0, 40)
+        buttonBlue.Position = UDim2.new(0, 0, 0, 0)
+        buttonBlue.Text = "Blue"
+        buttonBlue.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+        buttonBlue.TextColor3 = Color3.fromRGB(255, 255, 255)
+        buttonBlue.Parent = colorFrame
+        buttonBlue.MouseButton1Click:Connect(function()
+            MyLibrary:ChangeTheme(Color3.fromRGB(0, 170, 255))
+        end)
+
+        local buttonPink = Instance.new("TextButton")
+        buttonPink.Size = UDim2.new(0, 100, 0, 40)
+        buttonPink.Position = UDim2.new(0, 110, 0, 0)
+        buttonPink.Text = "Pink"
+        buttonPink.BackgroundColor3 = Color3.fromRGB(255, 50, 150)
+        buttonPink.TextColor3 = Color3.fromRGB(255, 255, 255)
+        buttonPink.Parent = colorFrame
+        buttonPink.MouseButton1Click:Connect(function()
+            MyLibrary:ChangeTheme(Color3.fromRGB(255, 50, 150))
+        end)
+
+        local buttonGray = Instance.new("TextButton")
+        buttonGray.Size = UDim2.new(0, 100, 0, 40)
+        buttonGray.Position = UDim2.new(0, 220, 0, 0)
+        buttonGray.Text = "Gray"
+        buttonGray.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+        buttonGray.TextColor3 = Color3.fromRGB(255, 255, 255)
+        buttonGray.Parent = colorFrame
+        buttonGray.MouseButton1Click:Connect(function()
+            MyLibrary:ChangeTheme(Color3.fromRGB(100, 100, 100))
+        end)
+    end
+
+    MyLibrary:CreateColorPicker()
+
+    return MyLibrary
+end
+
+return MyLibrary
