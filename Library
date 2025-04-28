@@ -25,7 +25,7 @@ function Library:CreateWindow(windowname, windowinfo)
     TadHub.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     TadHub.ResetOnSpawn = false
 
-    Frame.Parent = Ui60FPS
+    Frame.Parent = TadHub
     Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
     Frame.BorderColor3 = Color3.fromRGB(20, 20, 20)
     Frame.BorderSizePixel = 0
